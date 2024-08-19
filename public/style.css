@@ -1,0 +1,91 @@
+/*Se sacan los rellenos y margenes predeterminados */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*Estilos del body*/
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: rgb(70, 69, 69);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+/*Estilos del div*/
+.galeria {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+/*Estilos para las imagenes*/
+.galeria img {
+    height: 200px;
+    width: 100px;
+    object-fit: cover;
+    background-color: black;   /*Fondo negro para la imagen */
+    filter: brightness(0);
+    opacity: 1;   /*Inicialmente la imagen esta oculta */
+    transition: transform 0.5s ease, filter 0.5s ease, opacity 0.5s ease;   /*Transicion suave*/
+}
+    
+/*Efecto al pasar el cursor: se levanta y se muestra la imagen*/
+.galeria img:hover {
+    transform: translateY(-30px);   /*Se levanta la imagen*/
+    filter: brightness(1);   /*Se muestra la imagen*/
+    z-index: 10;   /*Para que la imagen este por encima de otras*/
+}
+
+/*Efecto de "ola" en las imagenes cercanas*/
+.galeria img:hover ~ img {
+    opacity: 0.4;   /*Las imagenes cercanas se vuelven mas opacas */
+    filter: brightness(0.5);   /*Mantienen solo algo de visibilidad*/
+}
+
+/*Efecto "ola" para las imagenes cercanas*/
+.galeria img:nth-child(1):hover ~ img:nth-child(2),
+.galeria img:nth-child(2):hover ~ img:nth-child(3),
+.galeria img:nth-child(3):hover ~ img:nth-child(4),
+.galeria img:nth-child(4):hover ~ img:nth-child(5),
+.galeria img:nth-child(5):hover ~ img:nth-child(6),
+.galeria img:nth-child(6):hover ~ img:nth-child(7),
+.galeria img:nth-child(7):hover ~ img:nth-child(8),
+.galeria img:nth-child(8):hover ~ img:nth-child(9),
+.galeria img:nth-child(9):hover ~ img:nth-child(10) {
+    transform: translateY(-10px);   
+}
+
+/*Restaurar la opacidad al mover el cursor fuera*/
+.galeria img:hover ~ img:hover {
+    opacity: 1;
+}
+
+/*Estilos del header*/
+header{
+    height: 150px;
+    align-content: space-around;
+}
+
+/*Estilos del h1*/
+h1{
+    color: #fff;
+}
+
+/*Estilos para el pie de pagina */
+footer {
+    margin-top: auto;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+}
